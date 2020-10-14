@@ -1,0 +1,7 @@
+swagger\training\swaggerDemo\service\impl\MailServiceImpl.class
+swagger\training\swaggerDemo\service\IMailService.class
+swagger\training\swaggerDemo\Swagger2.class
+swagger\training\swaggerDemo\Application.class
+swagger\training\swaggerDemo\controller\SayHelloController.class
+swagger\training\swaggerDemo\model\Person.class
+swagger\training\swaggerDemo\controller\PersonController.class

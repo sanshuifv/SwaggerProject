@@ -1,0 +1,1041 @@
+= Swagger Demo
+
+
+[[_overview]]
+== 概览
+Online/Offline Swagger Demo
+
+
+=== 版本信息
+[%hardbreaks]
+__版本__ : 0.1
+
+
+=== 联系方式
+[%hardbreaks]
+__名字__ : Swagger Demo
+__邮箱__ : swagger@demo
+
+
+=== 许可信息
+[%hardbreaks]
+__服务条款__ : http://localhost:6688/
+
+
+=== URI scheme
+[%hardbreaks]
+__域名__ : localhost:6688
+__基础路径__ : /
+
+
+=== 标签
+
+* Send email : Mail Service Impl
+* person-controller : Person Controller
+* say-hello-controller : Say Hello Controller
+* user-rest-controller : User Rest Controller
+
+
+
+
+[[_paths]]
+== 资源
+
+[[_send_email_resource]]
+=== Send Email
+Mail Service Impl
+
+
+[[_sendattachmentsmailusingget]]
+==== 发送带附件的邮件
+....
+GET /mail/sendAttachmentsMail
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4,.^2"]
+|===
+|类型|名称|说明|类型|默认值
+|**Query**|**content** +
+__必填__|文本内容|string|`"测试内容=>无bug通过"`
+|**Query**|**filePath** +
+__必填__|附件路径|string|`"C:\\Users\\Administrator\\Desktop\\pic01.jpg"`
+|**Query**|**subject** +
+__必填__|邮箱主题|string|`"测试带附件的邮件通讯"`
+|**Query**|**to** +
+__必填__|接收者邮箱|string|`"2567984521@qq.com"`
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/mail/sendAttachmentsMail
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "content" : "string",
+  "filePath" : "string",
+  "subject" : "string",
+  "to" : "string"
+}
+----
+
+
+[[_sendhtmlmailusingget]]
+==== 发送HTML邮件
+....
+GET /mail/sendHtmlMail
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4,.^2"]
+|===
+|类型|名称|说明|类型|默认值
+|**Query**|**content** +
+__可选__|content|string|
+|**Query**|**html** +
+__必填__|html内容|string|`"测试内容<br/><hr><br/>无bug通过"`
+|**Query**|**mail** +
+__必填__|接收者邮箱|string|`"1761437173@qq.com"`
+|**Query**|**subject** +
+__可选__|subject|string|
+|**Query**|**theme** +
+__必填__|邮箱主题|string|`"测试HTML邮件通讯"`
+|**Query**|**to** +
+__可选__|to|string|
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/mail/sendHtmlMail
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "content" : "string",
+  "html" : "string",
+  "mail" : "string",
+  "subject" : "string",
+  "theme" : "string",
+  "to" : "string"
+}
+----
+
+
+[[_sendresourcemailusingget]]
+==== 发送正文中有静态资源的邮件
+....
+GET /mail/sendResourceMail
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4,.^2"]
+|===
+|类型|名称|说明|类型|默认值
+|**Query**|**content** +
+__必填__|邮箱主题|string|`"<html><body>这有是图片的邮件：<img src='cid:1' ></body></html>"`
+|**Query**|**rscId** +
+__必填__|资源id|string|`"1"`
+|**Query**|**rscPath** +
+__必填__|资源路径|string|`"C:\\Users\\admin\\Desktop\\aa.html"`
+|**Query**|**subject** +
+__可选__|subject|string|
+|**Query**|**to** +
+__必填__|接收者邮箱|string|`"2567984521@qq.com"`
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/mail/sendResourceMail
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "content" : "string",
+  "rscId" : "string",
+  "rscPath" : "string",
+  "subject" : "string",
+  "to" : "string"
+}
+----
+
+
+[[_sendsimplemailusingget]]
+==== 发送简单文本
+....
+GET /mail/sendSimpleMail
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**content** +
+__可选__|content|string
+|**Query**|**subject** +
+__可选__|subject|string
+|**Query**|**to** +
+__可选__|to|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/mail/sendSimpleMail
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "content" : "string",
+  "subject" : "string",
+  "to" : "string"
+}
+----
+
+
+[[_person-controller_resource]]
+=== Person-controller
+Person Controller
+
+
+[[_addpersonusingpost]]
+==== Add person.
+....
+POST /person/add
+....
+
+
+===== 说明
+Add person info.
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**p** +
+__必填__|p|<<_person,Person>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_person,Person>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/person/add
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "age" : 0,
+  "firstName" : "string",
+  "lastName" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "age" : 0,
+  "firstName" : "string",
+  "lastName" : "string"
+}
+----
+
+
+[[_deletepersonusingdelete]]
+==== Delete person list.
+....
+DELETE /person/delete
+....
+
+
+===== 说明
+Delete persons info.
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**first** +
+__必填__|first|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|string
+|**204**|No Content|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/person/delete
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "first" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"string"
+----
+
+
+[[_getpersonlistusingget]]
+==== Get person list.
+....
+GET /person/search
+....
+
+
+===== 说明
+Get persons info.
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**first** +
+__必填__|first|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< <<_person,Person>> > array
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/person/search
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "first" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+[ {
+  "age" : 0,
+  "firstName" : "string",
+  "lastName" : "string"
+} ]
+----
+
+
+[[_updatepersonusingput]]
+==== Update person.
+....
+PUT /person/update
+....
+
+
+===== 说明
+Update person info.
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**p** +
+__必填__|p|<<_person,Person>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_person,Person>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/person/update
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "age" : 0,
+  "firstName" : "string",
+  "lastName" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "age" : 0,
+  "firstName" : "string",
+  "lastName" : "string"
+}
+----
+
+
+[[_say-hello-controller_resource]]
+=== Say-hello-controller
+Say Hello Controller
+
+
+[[_hellopersonusingget]]
+==== Say hello.
+....
+GET /hello/person/{name}
+....
+
+
+===== 说明
+Say hello to input person.
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**name** +
+__可选__|Person 名前|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|string
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/hello/person/string
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"string"
+----
+
+
+[[_helloworldusingget]]
+==== Say hello.
+....
+GET /hello/world
+....
+
+
+===== 说明
+Say hello to world.
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|string
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/hello/world
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"string"
+----
+
+
+[[_user-rest-controller_resource]]
+=== User-rest-controller
+User Rest Controller
+
+
+[[_adduserusingpost]]
+==== 添加新的信息
+....
+POST /api/user
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**user** +
+__必填__|user|<<_user,User>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|boolean
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/user
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "id" : 0,
+  "name" : "string",
+  "number" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+true
+----
+
+
+[[_updateuserusingput]]
+==== 更新信息
+....
+PUT /api/user
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**user** +
+__必填__|user|<<_user,User>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|boolean
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/user
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "id" : 0,
+  "name" : "string",
+  "number" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+true
+----
+
+
+[[_deleteusingdelete]]
+==== 根据id删除信息
+....
+DELETE /api/user
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**userId** +
+__必填__|userId|integer (int32)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|boolean
+|**204**|No Content|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/user
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "userId" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+true
+----
+
+
+[[_findbyuserageusingget]]
+==== 查询全部信息
+....
+GET /api/userAll
+....
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< <<_user,User>> > array
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/userAll
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+[ {
+  "id" : 0,
+  "name" : "string",
+  "number" : "string"
+} ]
+----
+
+
+[[_findbyusernameusingget]]
+==== 根据姓名查询信息
+....
+GET /api/username
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**userName** +
+__必填__|userName|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_user,User>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/username
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "userName" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "id" : 0,
+  "name" : "string",
+  "number" : "string"
+}
+----
+
+
+
+
+[[_definitions]]
+== 定义
+
+[[_person]]
+=== Person
+Person Info Model
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**age** +
+__可选__|Person age +
+**样例** : `0`|integer (int32)
+|**firstName** +
+__可选__|Person first name +
+**样例** : `"string"`|string
+|**lastName** +
+__可选__|Person last name +
+**样例** : `"string"`|string
+|===
+
+
+[[_user]]
+=== User
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**id** +
+__可选__|**样例** : `0`|integer (int32)
+|**name** +
+__可选__|**样例** : `"string"`|string
+|**number** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+
+
+
